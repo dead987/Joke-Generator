@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Poppins:wght@400;600&display=swap");
+
+:root {
+  /* Premium base: deep blue-violet, glass black, playful accent, crisp white */
+  --bg-gradient: linear-gradient(120deg, #05060f 0%, #060615 70%, #0d0713 96%);
+  --glass-bg: rgba(11, 13, 29, 0.96);
+  --glass-blur: blur(10px) saturate(160%);
+  --glass-border: rgba(169, 157, 245, 0.19);
+  --card-gradient: linear-gradient(118deg, #141728 24%, #110d1f 90%);
+  --accent: #e9e8ec;
+  --accent2: #49ffd3;
+  --fun: #ffe688;
+  --good: #7ae2ae;
+  --header: #ebe9fa;
+  --danger: #e74c3c;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  --shadow-card: 0 16px 45px 0 #1f1935a5, 0 2px 40px #7b5cff29;
+  --button-gradient: linear-gradient(110deg, #402cb1 18%, #382b9b 100%);
+  --shadow-btn: 0 8px 20px #49ffd345, 0 1px 8px #7b5cff31;
+}
+
+
+body {
+  font-family: "Poppins", "Archivo", sans-serif;
+  background: var(--bg-gradient);
+  color: var(--header);
+  min-height: 100vh;
+  margin: 0;
+  display: flex; justify-content: center; align-items: center;
+  position: relative; 
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  max-width: 540px;
+  width: 99vw;
+  background: var(--glass-bg);
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--glass-border);
+  text-align: left;
+  padding: 2.5rem 2.2rem 2.2rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  overflow: visible;
+  z-index: 2;
+}
+
+
+h1 {
+  margin: 0 0 1.25rem; 
+  font-family: "Archivo", "Poppins", sans-serif; 
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.055em;
+  display: flex; align-items: center; gap: 0.7rem;
+  filter: drop-shadow(0 2px 13px #49ffd341);
+}
+
+
+
+.quote-box {
+  position: relative;
+  margin-bottom: 2.2rem;
+  padding: 1.17rem 1.25rem 1.07rem;
+  border-radius: 17px;
+  background: var(--card-gradient);
+  /* border: 1.5px solid #7b5cff3b; */
+  box-shadow: 0 2px 5px #272a3924, 0 2px 28px #1f193526;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 75px;
+  z-index: 3;
+  transition: box-shadow 0.12s, background 0.16s, border 0.13s;
+}
+
+
+#joke {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--fun);
+  margin: 0 0 1rem;
+  opacity: 1;
+  transition: opacity 0.37s cubic-bezier(.82,.01,.3,.98), transform 0.18s;
+  will-change: opacity, transform;
+  text-shadow: 0 2px 7px #7b5cff33;
+  letter-spacing: 0.02em;
+}
+.joke-animate-out {
+  opacity: 0; transform: translateY(20px) scale(0.95) rotate(-2deg);
+}
+.joke-animate-in {
+  opacity: 1; transform: translateY(0) scale(1.04) rotate(1.7deg);
+  animation: jokeShake .34s cubic-bezier(.53,1.82,.27,-0.87) 1;
+}
+@keyframes jokeShake {
+  0% { transform: translateY(0) rotate(0);}
+  33% { transform: translateY(-8px) rotate(-3deg); }
+  70% { transform: translateY(5px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(0);}
+}
+
+
+button {
+  position: relative;
+  display: inline-flex;
+  align-items: center; justify-content: center; gap: 0.62rem;
+  background: var(--button-gradient);
+  color: #c4c4c4;
+  border: none;
+  padding: 1.06rem 2.19rem;
+  border-radius: var(--radius-pill);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer; outline: none;
+  transition: transform 0.12s, box-shadow 0.13s, filter 0.13s, background 0.19s;
+  z-index: 2;
+  border: 1.5px solid #7b5cff69;
+  overflow: visible;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.08) rotate(-2deg);
+  /* box-shadow: 0 17px 25px #49ffd341, 0 0 0 2px #7b5cff33; */
+  filter: brightness(1.18) drop-shadow(0 0 7px #7b5cff51);
+}
+button:active {
+  transform: translateY(2px) scale(0.97) rotate(2.5deg);
+  /* box-shadow: 0 7px 16px #7b5cff22; */
+}
+button:disabled {
+  background: linear-gradient(132deg, #685d89 28%, #49ffd31c 77%);
+  color: #eee;
+  cursor: not-allowed;
+  box-shadow: 0 0 0 1.5px #221d38bd;
+  filter: grayscale(0.19);
+}
+
+
+/* Responsive for mobile */
+@media (max-width: 540px) {
+  .container {
+    padding: 1.17rem 0.31rem 1rem;
+    border-radius: 15px;
+    min-height: 255px;
+    max-width: 99vw;
+    width: 99vw;
+  }
+  h1 { font-size: 1.09rem; }
+  #joke { font-size: 0.97rem; }
+  button { width: 100%; justify-content: center;}
+}
